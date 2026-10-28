@@ -1,9 +1,9 @@
 name: Build Windows EXE
 
 on:
-  workflow_dispatch:          # GitHub -> Actions -> Run workflow (manual)
+  workflow_dispatch:
   push:
-    tags: ['v*']              # git tag v1.0.0 && git push --tags  -> auto release
+    tags: ['v*']
 
 permissions:
   contents: write
@@ -11,9 +11,6 @@ permissions:
 jobs:
   build:
     runs-on: windows-latest
-    defaults:
-      run:
-        working-directory: desktop-admin
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
@@ -29,10 +26,10 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: MuruganTraderAdmin-Setup
-          path: desktop-admin/dist/MuruganTraderAdmin-Setup.exe
+          path: dist/MuruganTraderAdmin-Setup.exe
           if-no-files-found: error
       - name: Publish GitHub Release (tag builds only)
         if: startsWith(github.ref, 'refs/tags/v')
         uses: softprops/action-gh-release@v2
         with:
-          files: desktop-admin/dist/MuruganTraderAdmin-Setup.exe
+          files: dist/MuruganTraderAdmin-Setup.exe
