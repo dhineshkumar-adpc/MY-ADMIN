@@ -22,7 +22,7 @@
     "files": ["main.js", "offline.html", "build/icon.png"],
     "compression": "maximum",
     "win": {
-      "icon": "build/icon.ico",
+      "icon": "build/icon.png",
       "target": [{ "target": "nsis", "arch": ["x64", "ia32"] }]
     },
     "nsis": {
