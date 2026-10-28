@@ -1,0 +1,38 @@
+{
+  "name": "murugan-trader-admin",
+  "productName": "Murugan Trader Admin",
+  "version": "1.0.0",
+  "description": "Murugan Trader Admin desktop app",
+  "main": "main.js",
+  "author": "Murugan Trader",
+  "license": "UNLICENSED",
+  "scripts": {
+    "start": "electron .",
+    "build": "electron-builder --win --publish never"
+  },
+  "devDependencies": {
+    "electron": "22.3.27",
+    "electron-builder": "24.13.3"
+  },
+  "build": {
+    "appId": "shop.adpc.murugantrader.admin",
+    "productName": "Murugan Trader Admin",
+    "artifactName": "MuruganTraderAdmin-Setup.${ext}",
+    "directories": { "output": "dist", "buildResources": "build" },
+    "files": ["main.js", "offline.html", "build/icon.png"],
+    "compression": "maximum",
+    "win": {
+      "icon": "build/icon.ico",
+      "target": [{ "target": "nsis", "arch": ["x64", "ia32"] }]
+    },
+    "nsis": {
+      "oneClick": true,
+      "perMachine": false,
+      "allowElevation": false,
+      "createDesktopShortcut": true,
+      "createStartMenuShortcut": true,
+      "runAfterFinish": true,
+      "deleteAppDataOnUninstall": false
+    }
+  }
+}
